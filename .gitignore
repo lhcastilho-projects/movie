@@ -1,0 +1,7 @@
+# Temp folders
+.mvn/
+.vscode/
+target/
+
+# Configuration folder of this project
+conf/
