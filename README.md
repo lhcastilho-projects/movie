@@ -5,6 +5,7 @@ Welcome to the Worst Award Movie project, a Java application to show you the wor
 
 # Prerequisite
 * Java 17 or more installed.
+* JAVA_HOME envinronment variable set to the Java installation folder
 
 <br>
 
@@ -44,3 +45,4 @@ PS: It requires liberty up and running as explained on _build and run the projec
 # Contributions
 
 The project was developed by lhcastilho.
+
