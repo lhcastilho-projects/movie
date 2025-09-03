@@ -43,8 +43,6 @@ public class TestConsumingProducerAward {
         Jsonb jsonb = JsonbBuilder.create();
         ProducerIntervalResponse jsonResponse = jsonb
             .fromJson(strJsonResponse, ProducerIntervalResponse.class);
-        
-        System.out.println(strJsonResponse);
 
         assertEquals(jsonResponse.getMin().size(), 1);
         assertEquals(jsonResponse.getMax().size(), 1);
