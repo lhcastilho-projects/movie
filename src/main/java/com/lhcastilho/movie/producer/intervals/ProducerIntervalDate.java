@@ -7,6 +7,8 @@ public class ProducerIntervalDate {
     private Integer followingWin;
     private String producer;
 
+    public ProducerIntervalDate() { }
+
     public ProducerIntervalDate(String producer, Integer interval, Integer previousWin, Integer followingWin) {
         this.producer = producer;
         this.interval = interval;
