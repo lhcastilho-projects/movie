@@ -32,11 +32,11 @@ public class ProducerIntervalDate {
         this.previousWin = previous;
     }
 
-    public Integer getFollowing() {
+    public Integer getFollowingWin() {
         return followingWin;
     }
 
-    public void setFollowing(Integer followingWin) {
+    public void setFollowingWin(Integer followingWin) {
         this.followingWin = followingWin;
     }
 

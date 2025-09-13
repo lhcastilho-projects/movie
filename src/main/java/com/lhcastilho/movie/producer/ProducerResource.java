@@ -92,7 +92,7 @@ public class ProducerResource {
     public Response findAll() {
         try {
             ProducerIntervalResponse response = producerService
-                .awardsInterval(1800, 2025);
+                .awardsInterval(0, 100000);
 
             if (response == null) {
                 return Response

@@ -29,7 +29,7 @@ public class Finder {
                 minElements.add(new ProducerIntervalDate(producer, min, before, after));
             }
 
-            int partialMax = after - before;
+            int partialMax = after - years.get(0);
             if (partialMax > max) {
                 max = partialMax;
                 maxElements = new ArrayList<>();
