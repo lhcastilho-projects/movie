@@ -13,7 +13,7 @@
                   httpsPort="-1" />
 
     <!-- Automatically expand WAR files and EAR files -->
-    <applicationManager autoExpand="true"/>
+    <applicationManager autoExpand="true" />
 
     <!-- Configures the application on a specified context root -->
     <webApplication contextRoot="/movie" location="movie.war" />
@@ -22,16 +22,15 @@
     <ssl id="defaultSSLConfig" trustDefaultCerts="true" />
 
     <!-- SQLite Library configuration -->
-    <library id="SQLiteLib">
+    <library id="H2Lib">
         <fileset dir="${server.config.dir}/lib/global" includes="*.jar" />
     </library>
 
     <!-- Database Configuration -->
-    <dataSource id="movie" jndiName="jdbc/movie" type="javax.sql.DataSource" transactional="true" >
-        <jdbcDriver libraryRef="SQLiteLib"
-                    javax.sql.ConnectionPoolDataSource="org.sqlite.javax.SQLiteConnectionPoolDataSource" 
-                    javax.sql.DataSource="org.sqlite.SQLiteDataSource" />
-        <properties URL="jdbc:sqlite:${wlp.install.dir}../../../db/movies.db" />
+    <dataSource id="movie" jndiName="jdbc/movie">
+        <jdbcDriver libraryRef="H2Lib"
+                    javax.sql.DataSource="org.h2.jdbcx.JdbcDataSource" />
+        <properties URL="jdbc:h2:mem:moviedb;DB_CLOSE_DELAY=-1" />
     </dataSource>
 
 </server>

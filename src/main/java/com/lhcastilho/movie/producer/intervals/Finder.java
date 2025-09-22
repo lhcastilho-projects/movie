@@ -16,6 +16,7 @@ public class Finder {
     public void findIntervals(List<Integer> years, String producer) {
         max = 0;
         min = Integer.MAX_VALUE;
+        int first = years.get(0);
         for (int i = 0; i < years.size() - 1; i++) {
             int before = years.get(i);
             int after = years.get(i + 1);
@@ -33,7 +34,7 @@ public class Finder {
             if (partialMax > max) {
                 max = partialMax;
                 maxElements = new ArrayList<>();
-                maxElements.add(new ProducerIntervalDate(producer, max, before, after));
+                maxElements.add(new ProducerIntervalDate(producer, max, first, after));
             }
         }
     }

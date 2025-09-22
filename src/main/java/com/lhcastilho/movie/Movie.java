@@ -18,10 +18,16 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "movies")
+@SequenceGenerator(
+    name = "seq_movie",
+    sequenceName = "seq_movie",
+    initialValue = 1,
+    allocationSize = 50)
 @NamedQueries({
     @NamedQuery( 
         name = "Movie.findByName",
@@ -36,7 +42,7 @@ import jakarta.persistence.Table;
 public class Movie {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_movie")
     private int id;
 
     @Basic(optional = false)
@@ -44,6 +50,7 @@ public class Movie {
     private String title;
 
     @Basic(optional = false)
+    @Column(name="year_review", nullable = false)
     private int year;
 
     @Basic(optional = false)

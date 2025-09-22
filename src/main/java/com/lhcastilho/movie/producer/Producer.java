@@ -13,10 +13,16 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "producers")
+@SequenceGenerator(
+    name = "seq_producer",
+    sequenceName = "seq_producer",
+    initialValue = 1,
+    allocationSize = 50)
 @NamedQueries({
     @NamedQuery( 
         name = "Producer.findByName",
@@ -28,11 +34,11 @@ import jakarta.persistence.Table;
 public class Producer {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_producer")
     private int id;
 
     @Basic(optional = false)
-    @Column(name = "name", nullable = false, unique = true)
+    @Column(nullable = false, unique = true)
     private String name;
 
     @ManyToMany(mappedBy = "producers")

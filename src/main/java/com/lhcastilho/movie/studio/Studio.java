@@ -13,10 +13,16 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "studios")
+@SequenceGenerator(
+    name = "seq_studio",
+    sequenceName = "seq_studio",
+    initialValue = 1,
+    allocationSize = 50)
 @NamedQueries({
     @NamedQuery( 
         name = "Studio.findByName",
@@ -28,11 +34,11 @@ import jakarta.persistence.Table;
 public class Studio {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_studio")
     private int id;
 
     @Basic(optional = false)
-    @Column(name = "name", nullable = false, unique = true)
+    @Column(nullable = false, unique = true)
     private String name;
 
     @ManyToMany(mappedBy = "studios")
@@ -51,4 +57,10 @@ public class Studio {
     public Set<Movie> getMovies() { return movies; }
 
     public void setMovies(Set<Movie> movies) { this.movies = movies; }
+
+    @Override
+    public String toString() {
+        return "Studio [id=" + id + ", name=" + name + "]";
+    }
+
 }

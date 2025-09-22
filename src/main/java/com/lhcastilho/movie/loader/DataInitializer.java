@@ -47,10 +47,6 @@ public class DataInitializer {
         }
 
         try {
-
-            // Clean up database
-            cleanupDatabase();
-
             // Read file content
             List<String> lines = Files.readAllLines(inputFilePath);
 
@@ -86,8 +82,6 @@ public class DataInitializer {
             loadStudios(studios);
             loadProducers(producers);
             loadMovies(movies);
-
-            // System.out.println("Movies loaded = " + movies.size());
         } catch (IOException e) {
             System.out.println("File cannot be loaded. " + e.getMessage());
         }
