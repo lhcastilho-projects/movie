@@ -114,26 +114,11 @@
                 </configuration>
                 <executions>
                     <execution>
-                        <id>create-server</id>
-                        <phase>prepare-package</phase>
-                        <goals>
-                            <goal>clean</goal>
-                            <goal>create</goal>
-                        </goals>
-                    </execution>
-                    
-                    <execution>
-                        <id>deploy-server</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>deploy</goal>
-                        </goals>
-                    </execution>
-                
-                    <execution>
                         <id>test-start</id>
                         <phase>pre-integration-test</phase>
                         <goals>
+                            <goal>create</goal>
+                            <goal>deploy</goal>
                             <goal>test-start</goal>
                         </goals>
                     </execution>
