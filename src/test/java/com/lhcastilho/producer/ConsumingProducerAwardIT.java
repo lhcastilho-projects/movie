@@ -44,12 +44,28 @@ public class ConsumingProducerAwardIT {
         ProducerIntervalResponse jsonResponse = jsonb
             .fromJson(strJsonResponse, ProducerIntervalResponse.class);
 
+        // Validate response size of min and max lists
         assertEquals(jsonResponse.getMin().size(), 1);
         assertEquals(jsonResponse.getMax().size(), 1);
 
+        // Validate min producer result
         String minProducerName = jsonResponse.getMin().get(0).getProducer();
         assertEquals("Joel Silver", minProducerName);
+        int minInterval = jsonResponse.getMin().get(0).getInterval();
+        assertEquals(1, minInterval);
+        int minPreviousWinYear = jsonResponse.getMin().get(0).getPreviousWin();
+        assertEquals(1990, minPreviousWinYear);
+        int minFollowingWinYear = jsonResponse.getMin().get(0).getFollowingWin();
+        assertEquals(1991, minFollowingWinYear);
+
+        // Validate max producer result
         String maxProducerName = jsonResponse.getMax().get(0).getProducer();
         assertEquals("Matthew Vaughn", maxProducerName);
+        int maxInterval = jsonResponse.getMax().get(0).getInterval();
+        assertEquals(13, maxInterval);
+        int previousWinYear = jsonResponse.getMax().get(0).getPreviousWin();
+        assertEquals(2002, previousWinYear);
+        int followingWinYear = jsonResponse.getMax().get(0).getFollowingWin();
+        assertEquals(2015, followingWinYear);
     }
 }
