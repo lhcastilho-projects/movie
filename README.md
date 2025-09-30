@@ -37,9 +37,6 @@ Run Integration test
 ./mvnw verify
 ```
 
-PS: It requires liberty up and running as explained on _build and run the project_)
-
-
 <br>
 
 # Contributions
